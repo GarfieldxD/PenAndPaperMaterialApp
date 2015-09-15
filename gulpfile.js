@@ -30,11 +30,18 @@ gulp.task('watch', function() {
  }); 
  //webserver
  gulp.task('webserver', function() {
-  gulp.src('app')
+  gulp.src(src)
     .pipe(plugins.serverLivereload({
       livereload: true,
       open: true
     }));
+});
+
+gulp.task('wiredep',funtion(){
+	gulp.src(src + 'index.html')
+    .pipe(wiredep())
+    .pipe(gulp.dest('./dest'));
+	
 });
  // Default Task
 gulp.task('default', ['scripts', 'images', 'watch','webserver']);
