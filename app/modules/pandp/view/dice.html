@@ -1,0 +1,37 @@
+<md-toolbar layout="row" class="md-whiteframe-z2">
+    <md-button hide-gt-sm aria-label="Show User List">
+        <ng-md-icon icon="menu"></ng-md-icon>
+    </md-button>
+    <h1 flex>Würfel</h1>
+    <span></span>
+</md-toolbar>
+<md-content flex id="content" style="padding:20px;" layout="column">
+    <form name="diceForm">
+        <div layout layout="column">
+            <md-input-container flex>
+                <label>Anzahl der Würfe</label>
+                <input required type="number" step="1" name="quantity" ng-model="dice.quantity" min="1" max="20">
+                <div ng-messages="diceForm.quantity.$error">
+                    <div ng-message="required">Bitte wähle die Anzahl der Würfe aus.</div>
+                    <div ng-message="min">Die Anzahl der würfe muss größer als <b>1</b> sein</div>
+                    <div ng-message="max">Mehr als 20 Würfe sind leider nicht möglich</div>
+                </div>
+            </md-input-container flex>
+            <md-select required placeholder="Würfelaugen" ng-model="dice.spots">
+                <md-option ng-value="dice.spots" ng-repeat="dice in dices">{{dice.spots}}</md-option>
+            </md-select>
+        </div>
+        <div layout flex>
+            <md-button ng-disabled="diceForm.$invalid" class="md-raised md-primary" ng-click="RollTheDice()" flex>
+                Würfeln!
+            </md-button>
+        </div>
+    </form>
+    <md-divider></md-divider>
+    <md-list>
+        <md-list-item ng-repeat="throw in throws">
+            <p>{{throw.Position}}</p>
+            {{ throw.Value }}
+        </md-list-item>
+    </md-list>
+</md-content>

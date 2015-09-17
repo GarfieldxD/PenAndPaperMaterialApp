@@ -1,7 +1,7 @@
 (function () {    
   'use strict';
   
-    angular.module('starterApp')
+    angular.module('app')
         .config(function ($mdThemingProvider, $mdIconProvider) {
 
             $mdIconProvider

@@ -1,0 +1,11 @@
+<md-toolbar class="md-whiteframe-z1">
+  <h1>Users</h1>
+</md-toolbar>
+
+<md-list>
+  <md-list-item ng-repeat="it in ul.users">
+    <md-button ui-sref="app.pandp.dice" ng-class="{'selected' : it === ul.selected }">
+      Würfel
+    </md-button>
+  </md-list-item>
+</md-list>
