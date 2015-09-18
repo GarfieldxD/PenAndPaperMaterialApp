@@ -2,10 +2,13 @@
 
   angular
     .module('pandp')
-    .controller('inventoryController', ['$scope', 'pandpService','sidenavService', pandpInventoryController]);
+    .controller('inventoryController', ['$scope', 'sidenavService','pandpFactory', pandpInventoryController]);
 
-  function pandpInventoryController($scope, pandpService, sidenavService) {
+  function pandpInventoryController($scope,  sidenavService,pandpFactory) {
     $scope.ToggleLeft = sidenavService.ToggleSidenav('left');
+    
+    $scope.inventory = pandpFactory.inventory;
+    
   }
 
 })();

@@ -1,6 +1,6 @@
 (function () {
     'use strict';
-    angular.module('app').config(function ($stateProvider, $urlRouterProvider) {
+    angular.module('app').config(function ($stateProvider, $urlRouterProvider) {       
         $stateProvider
             .state('app', {
                 // views: {

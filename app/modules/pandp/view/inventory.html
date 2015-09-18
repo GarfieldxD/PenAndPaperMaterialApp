@@ -1,0 +1,18 @@
+<md-toolbar layout="row" class="md-whiteframe-z2">
+    <md-button hide-gt-sm ng-click="ToggleLeft()" aria-label="Show User List">
+        <ng-md-icon icon="menu"></ng-md-icon>
+    </md-button>
+    <h1 flex>Inventar</h1>
+    <span></span>
+</md-toolbar>
+<md-content flex id="content" style="padding:20px;" layout="column">
+    <md-list>
+        <md-list-item ng-repeat="item in inventory.Slots">
+            {{item.Name}}
+            <ng-md-icon icon="weight" ng-class="{'selected' : selected === 'Inventar' }"></ng-md-icon>
+            {{item.Size}}  
+            <ng-md-icon icon="weight" ng-class="{'selected' : selected === 'Inventar' }"></ng-md-icon>
+            {{item.Weight}}            
+        </md-list-item>
+    </md-list>    
+</md-content>

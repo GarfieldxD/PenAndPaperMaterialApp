@@ -9,7 +9,8 @@
         abstract: true,
         views: {
           'sidenav@': {
-            templateUrl: "modules/pandp/view/sidenav.html"
+            templateUrl: "modules/pandp/view/sidenav.html",
+            controller: "sidenavController"
           },
           'content@': {
             template: "<div ui-view></div>",

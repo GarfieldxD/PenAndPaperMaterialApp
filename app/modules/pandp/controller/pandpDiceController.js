@@ -2,9 +2,9 @@
 
   angular
     .module('pandp')
-    .controller('diceController', ['$scope', 'pandpService','sidenavService', pandpDiceController]);
+    .controller('diceController', ['$scope','sidenavService', pandpDiceController]);
 
-  function pandpDiceController($scope, pandpService, sidenavService) {
+  function pandpDiceController($scope,  sidenavService) {
     $scope.dice = {
      quantity : 2 
     };

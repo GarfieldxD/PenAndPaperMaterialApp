@@ -2,14 +2,10 @@
   'use strict';
 
   angular.module('pandp')
-    .service('pandpService', ['$q', pandpService])
-    .service('sidenavService', ['$q', '$mdUtil', '$mdSidenav', sidenavService]);
+    .factory('pandpFactory', pandpFactory)
+    .service('sidenavService', ['$q', '$mdUtil', '$mdSidenav', '$log', sidenavService]);
 
-  function sidenavService($q, $mdUtil, $mdSidenav) {
-    /**
-       * Build handler to open/close a SideNav; when animation finishes
-       * report completion in console
-       */
+  function sidenavService($q, $mdUtil, $mdSidenav, $log) {
     function buildToggler(navID) {
       var debounceFn = $mdUtil.debounce(function () {
         $mdSidenav(navID)
@@ -26,40 +22,33 @@
     };
   };
 
-  /**
-   * Users DataService
-   * Uses embedded, hard-coded data model; acts asynchronously to simulate
-   * remote data service call(s).
-   *
-   * @returns {{loadAll: Function}}
-   * @constructor
-   */
-  function pandpService($q) {
-    var users = [];
-	var inventory = {
-		Size:4,
-		Slots:[],
-		ActualSize: function() {
-			var size = Size;
-			Slots.forEach(function(entry){
-				size += entry.Size;
-			});
-		}
-	};
-	
-	inventory.slots.push({
-		Name:"Stein",
-		Size:0.5,
-		Weight:0.5
-	});
-
-    // Promise-based API
-    return {
-      loadAllUsers: function () {
-        // Simulate async nature of real remote calls
-        return $q.when(users);
+  function pandpFactory() {
+    var factory = {};
+    factory.inventory = {
+      Size: 4,
+      Slots: [],
+      ActualSize: function () {
+        var size = this.Size;
+        this.Slots.forEach(function (entry) {
+          size += entry.Size;
+        });
       }
     };
-  }
+
+    factory.inventory.add = function (item) {
+      factory.inventory.Slots.push({
+        Name: item.Name,
+        Size: (item.Size === undefined) ? 0 : item.Size,
+        Weight: (item.Weight === undefined) ? 0 : item.Weight
+      })
+    }
+
+    factory.inventory.add({
+      Name: "Stein",
+      Size: 0.5,
+      Weight: 0.5
+    });
+    return factory;
+  };
 
 })();

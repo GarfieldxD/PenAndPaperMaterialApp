@@ -1,11 +1,18 @@
 <md-toolbar class="md-whiteframe-z1">
-  <h1>Users</h1>
+  <h1>Menu</h1>
 </md-toolbar>
 
 <md-list>
-  <md-list-item ng-repeat="it in ul.users">
-    <md-button ui-sref="app.pandp.dice" ng-class="{'selected' : it === ul.selected }">
+  <md-list-item>
+    <md-button ui-sref="app.pandp.dice" ng-click="ToggleLeft();selected = 'Würfel';" class="menuItem" ng-class="{'selected' : selected === 'Würfel' }">
+      <ng-md-icon class="menuIcon" icon="dice" ng-class="{'selected' : selected === 'Würfel' }" size="50"></ng-md-icon>
       Würfel
+    </md-button>
+  </md-list-item>
+  <md-list-item>
+    <md-button ui-sref="app.pandp.inventory" ng-click="ToggleLeft();selected = 'Inventar';" ng-class="{'selected' : selected === 'Inventar' }">
+      <ng-md-icon class="menuIcon" icon="inventory" ng-class="{'selected' : selected === 'Inventar' }" size="50"></ng-md-icon>
+      Inventar
     </md-button>
   </md-list-item>
 </md-list>
