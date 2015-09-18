@@ -24,6 +24,15 @@
             controller: "diceController"
           }
         }
+      })
+	   .state('app.pandp.inventory', {
+        url: '/pandp/inventory',
+        views: {
+          'content@': {
+            templateUrl: "modules/pandp/view/inventory.html",
+            controller: "inventoryController"
+          }
+        }
       });
   });
 })();

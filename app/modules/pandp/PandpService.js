@@ -36,6 +36,22 @@
    */
   function pandpService($q) {
     var users = [];
+	var inventory = {
+		Size:4,
+		Slots:[],
+		ActualSize: function() {
+			var size = Size;
+			Slots.forEach(function(entry){
+				size += entry.Size;
+			});
+		}
+	};
+	
+	inventory.slots.push({
+		Name:"Stein",
+		Size:0.5,
+		Weight:0.5
+	});
 
     // Promise-based API
     return {
