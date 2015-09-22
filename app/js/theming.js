@@ -16,8 +16,9 @@
 
 
             $mdThemingProvider.theme('default')
-                .primaryPalette('brown')
-                .accentPalette('red');
+                .primaryPalette('green')
+                .accentPalette('red')
+                .backgroundPalette('deep-orange');
 
             ngMdIconServiceProvider        
             // Get an existing icon

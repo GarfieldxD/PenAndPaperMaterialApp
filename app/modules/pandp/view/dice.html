@@ -28,10 +28,14 @@
         </div>
     </form>
     <md-divider></md-divider>
-    <md-list>
-        <md-list-item ng-repeat="throw in throws">
-            <p>{{throw.Position}}</p>
-            {{ throw.Value }}
-        </md-list-item>
-    </md-list>
+
+    <md-content flex>
+        <md-list>
+            <md-list-item ng-repeat="throw in throws">
+                <p>{{throw.Position}}</p>
+                {{ throw.Value }}
+            </md-list-item>
+        </md-list>
+
+    </md-content>
 </md-content>
